@@ -1,0 +1,6 @@
+# Temperature values for each speed
+speed1_temp=68
+speed2_temp=73
+
+# Delay between speed switching
+sleep_time=20

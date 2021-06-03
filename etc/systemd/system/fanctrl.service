@@ -1,0 +1,12 @@
+[Unit]
+Description=Control Argon One fan
+Documentation=https://github.com/Argon40Tech/Argon-ONE-i2c-Codes
+AssertPathExists=/dev/i2c-1
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/fanctrl
+ExecStart=/usr/local/bin/fanctrl -D
+
+[Install]
+WantedBy=multi-user.target

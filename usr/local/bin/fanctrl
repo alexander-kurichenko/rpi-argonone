@@ -1,0 +1,64 @@
+#!/bin/sh
+# Control Argon One fan
+# i2c codes: https://github.com/Argon40Tech/Argon-ONE-i2c-Codes
+
+# Following variables should be defined in configuration file
+# speed1_temp
+# speed2_temp
+# sleep_time
+# See fanctrl.service
+
+
+if ! i2cset -V >/dev/null 2>&1; then
+	echo i2c-tools not found on your system!
+	exit 1
+fi
+
+usage() {
+	echo "Usage: $(basename "$0") [-D] [on|off] [0-4]"
+}
+
+set_fanspeed () {
+	if [ "$1" != "$current_speed" ]; then
+		[ -n "$current_temp" ] && echo "Current temp: $current_temp. \c"
+		echo "Seting fan speed to $1"
+		current_speed="$1"
+		i2cset -y 1 0x1a "$1"
+	fi
+}
+
+mainloop() {
+	while sleep "$sleep_time"; do
+		current_temp=$(( $(cat /sys/class/thermal/thermal_zone0/temp) / 1000))
+		if   [ "$current_temp" -ge "$speed2_temp" ]; then
+			set_fanspeed 2
+		elif [ "$current_temp" -ge "$speed1_temp" ]; then
+			set_fanspeed 1
+		else
+			set_fanspeed 0
+		fi
+	done
+}
+
+case "$1" in
+	-D)
+		mainloop
+	;;
+	on)
+	        set_fanspeed 1
+		
+	;;
+	off)
+		set_fanspeed 0
+	;;
+	[0-4])
+		set_fanspeed "$1"
+	;;
+	--help)
+		usage
+	;;
+	*)
+		usage
+		exit 1
+	;;
+esac

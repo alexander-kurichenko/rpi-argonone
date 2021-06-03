@@ -1,0 +1,13 @@
+[Unit]
+Description=Turn off Raspberry Pi
+Documentation=https://github.com/Argon40Tech/Argon-ONE-i2c-Codes
+AssertPathExists=/dev/i2c-1
+DefaultDependencies=no
+After=poweroff.target halt.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'i2cset -y 1 0x1a 0xff'
+
+[Install]
+WantedBy=poweroff.target halt.target

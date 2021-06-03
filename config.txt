@@ -1,0 +1,5 @@
+# Argon One power off button (triggered by double-click)
+dtoverlay=gpio-key,gpio=4,active_low=1,gpio_pull=down,keycode=116
+
+# Needs to access Argon One i2c controller
+dtparam=i2c_arm=on
