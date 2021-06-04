@@ -36,7 +36,7 @@ dtoverlay=gpio-key,gpio=4,active_low=1,gpio_pull=down,keycode=116
   &nbsp;
 
  
- - And copy these files to specified location in your system:
+ - Copy these files to specified location in your system:
 
    - **/usr/local/bin/fanctrl**
    
@@ -59,9 +59,10 @@ dtoverlay=gpio-key,gpio=4,active_low=1,gpio_pull=down,keycode=116
    - **/etc/systemd/system/fanctrl.service**
 
 	    _Starts /usr/local/bin/fanctrl._
-	   
+	    
+- Enable autostart:
+     `systemctl enable fanctrl hw-shutdown`
 
-Reboot and enjoy :)
 
 ___
     
