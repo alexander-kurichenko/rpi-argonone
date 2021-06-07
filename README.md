@@ -10,7 +10,7 @@ Fan and power control for Argon One Raspberry Pi case
 	
      RaspberryPi OS / Debian / Ubuntu:	`sudo apt install i2c-tools`
     
-     Arch:               `sudo pacman -Sy i2c-tools`
+     Arch:               `sudo pacman -S i2c-tools`
     
      Fedora:	`sudo dnf install i2c-tools`
 	
