@@ -1,3 +1,17 @@
+
+
+**DEPRECATED**
+
+Use pwm-fan device tree overlay.
+
+https://github.com/alexander-kurichenko/devicetree-custom
+
+To make it work, desolder controller pin and use Rpi PWM instead:
+
+![wiring](https://user-images.githubusercontent.com/74985537/133619285-bfa04972-84db-40d2-bf73-70a8747fa62f.png)
+
+_original image source: https://github.com/Argon40Tech/Argon-ONE-i2c-Codes/issues/1_
+
 # rpi-argonone
 Fan and power control for Argon One Raspberry Pi case
 ---
