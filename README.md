@@ -4,7 +4,7 @@
 
 Use pwm-fan device tree overlay.
 
-https://github.com/alexander-kurichenko/devicetree-custom
+https://github.com/alexander-kurichenko/devicetree-custom/tree/master/rpi4
 
 To make it work, desolder controller pin and use Rpi PWM instead:
 
